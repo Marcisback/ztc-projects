@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 # Configure Nginx for React SPA
 cat > /etc/nginx/conf.d/react-app.conf << 'EOL'
 server {
@@ -20,4 +22,5 @@ fi
 
 # Set proper permissions and restart nginx
 chmod -R 755 /usr/share/nginx/html
+nginx -t
 systemctl restart nginx
